@@ -1,7 +1,11 @@
-export function createState(stateName: string, initialValue: any) {
-  window[stateName] = initialValue
-  const functionName = `set${stateName}`
-  window[functionName] = (newValue: any) => (window[stateName] = newValue)
+window['CREATE_YOUR_OWN_REACT'] = {}
+const globalVars = window['CREATE_YOUR_OWN_REACT']
 
-  return window[functionName]
+export function createState(stateName: string, initialValue: any) {
+  globalVars[stateName] = initialValue
+  const functionName = `set${stateName}`
+  globalVars[functionName] = (newValue: any) =>
+    (globalVars[stateName] = newValue)
+
+  return globalVars[functionName]
 }
